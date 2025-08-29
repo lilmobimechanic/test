@@ -1,1 +1,322 @@
-<!-- placeholder for admin.html; generated -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSM Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 w-full max-w-md mx-4">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Admin Login</h2>
+                <p class="text-slate-600">Secure access to admin panel</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Username</label>
+                    <input type="text" id="username" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Password</label>
+                    <input type="password" id="password" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold mb-2">2FA Code</label>
+                    <input type="text" id="twofa" maxlength="6" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-center tracking-widest" placeholder="000000" required>
+                </div>
+                
+                <div id="captchaContainer" class="text-center">
+                    <div class="bg-slate-100 p-4 rounded-lg mb-2">
+                        <span id="captchaQuestion" class="font-mono text-lg"></span>
+                    </div>
+                    <input type="number" id="captchaAnswer" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-center" placeholder="Answer" required>
+                </div>
+                
+                <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                    Login
+                </button>
+            </form>
+            
+            <div id="loginError" class="mt-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" style="display: none;">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="settings" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h1 class="text-xl font-bold">Admin Panel</h1>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-slate-600">Welcome, Admin</span>
+                    <button id="logoutBtn" class="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex">
+            <!-- Sidebar -->
+            <aside class="w-64 bg-white border-r border-slate-200 min-h-screen">
+                <nav class="p-4">
+                    <div class="space-y-2">
+                        <button class="nav-item active w-full text-left px-4 py-3 rounded-lg bg-blue-50 text-blue-700 font-medium" data-section="dashboard">
+                            <i data-lucide="home" class="w-4 h-4 inline mr-3"></i>
+                            Dashboard
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="services">
+                            <i data-lucide="package" class="w-4 h-4 inline mr-3"></i>
+                            Services
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="inquiries">
+                            <i data-lucide="mail" class="w-4 h-4 inline mr-3"></i>
+                            Inquiries
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="cms">
+                            <i data-lucide="edit" class="w-4 h-4 inline mr-3"></i>
+                            CMS Pages
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="ads">
+                            <i data-lucide="megaphone" class="w-4 h-4 inline mr-3"></i>
+                            Advertisements
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="media">
+                            <i data-lucide="image" class="w-4 h-4 inline mr-3"></i>
+                            Media Gallery
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="settings">
+                            <i data-lucide="settings" class="w-4 h-4 inline mr-3"></i>
+                            Settings
+                        </button>
+                        <button class="nav-item w-full text-left px-4 py-3 rounded-lg hover:bg-slate-50 font-medium" data-section="security">
+                            <i data-lucide="shield" class="w-4 h-4 inline mr-3"></i>
+                            Security
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 pt-4 border-t border-slate-200">
+                        <button id="factoryReset" class="w-full px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg font-medium">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 inline mr-3"></i>
+                            Factory Reset
+                        </button>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-6">
+                <div id="content">
+                    <!-- Dashboard -->
+                    <div id="dashboard-section" class="section">
+                        <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="bg-white p-6 rounded-xl border">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-slate-600 text-sm">Total Services</p>
+                                        <p class="text-2xl font-bold" id="totalServices">0</p>
+                                    </div>
+                                    <i data-lucide="package" class="w-8 h-8 text-blue-600"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-slate-600 text-sm">New Inquiries</p>
+                                        <p class="text-2xl font-bold" id="newInquiries">0</p>
+                                    </div>
+                                    <i data-lucide="mail" class="w-8 h-8 text-green-600"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-slate-600 text-sm">Server Status</p>
+                                        <p class="text-lg font-semibold text-green-600">Online</p>
+                                    </div>
+                                    <i data-lucide="server" class="w-8 h-8 text-green-600"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-slate-600 text-sm">Active Ads</p>
+                                        <p class="text-2xl font-bold" id="activeAds">1</p>
+                                    </div>
+                                    <i data-lucide="megaphone" class="w-8 h-8 text-purple-600"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Recent Inquiries</h3>
+                                <div id="recentInquiries" class="space-y-3">
+                                    <p class="text-slate-600">No recent inquiries</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Server Status</h3>
+                                <div class="space-y-3" id="serverStatusList">
+                                    <!-- Server status items will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div id="services-section" class="section" style="display: none;">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold">Services Management</h2>
+                            <button id="addServiceBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                <i data-lucide="plus" class="w-4 h-4 inline mr-2"></i>
+                                Add Service
+                            </button>
+                        </div>
+                        
+                        <div id="servicesList" class="space-y-4">
+                            <!-- Services will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Other sections will be added here -->
+                    <div id="inquiries-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">Customer Inquiries</h2>
+                        <div id="inquiriesList" class="bg-white rounded-xl border overflow-hidden">
+                            <!-- Inquiries table will be populated here -->
+                        </div>
+                    </div>
+
+                    <div id="cms-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">CMS Pages</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Hero Section</h3>
+                                <textarea id="heroContent" rows="4" class="w-full p-4 border border-slate-300 rounded-lg"></textarea>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Content Section 1</h3>
+                                <textarea id="cmsContent1" rows="6" class="w-full p-4 border border-slate-300 rounded-lg"></textarea>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Content Section 2</h3>
+                                <textarea id="cmsContent2" rows="6" class="w-full p-4 border border-slate-300 rounded-lg"></textarea>
+                            </div>
+                            <button id="saveCMS" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="ads-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">Advertisement Management</h2>
+                        <div class="bg-white p-6 rounded-xl border">
+                            <h3 class="text-lg font-semibold mb-4">Promo Banner</h3>
+                            <textarea id="promoBannerText" rows="3" class="w-full p-4 border border-slate-300 rounded-lg mb-4" placeholder="Enter promo banner text..."></textarea>
+                            <button id="saveAds" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                Save Advertisement
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="media-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">Media Gallery</h2>
+                        <div class="bg-white p-6 rounded-xl border">
+                            <p class="text-slate-600">Media upload functionality will be implemented here.</p>
+                        </div>
+                    </div>
+
+                    <div id="settings-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">Site Settings</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Brand Settings</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold mb-2">Brand Name</label>
+                                        <input type="text" id="brandNameSetting" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold mb-2">Currency</label>
+                                        <select id="currencySetting" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                            <option value="USD">USD ($)</option>
+                                            <option value="EUR">EUR (€)</option>
+                                            <option value="GBP">GBP (£)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Contact Information</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-semibold mb-2">Telegram</label>
+                                        <input type="text" id="telegramSetting" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold mb-2">WhatsApp</label>
+                                        <input type="text" id="whatsappSetting" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button id="saveSettings" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                Save Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="security-section" class="section" style="display: none;">
+                        <h2 class="text-2xl font-bold mb-6">Security Settings</h2>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Server Status Controls</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="serverControls">
+                                    <!-- Server controls will be populated here -->
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl border">
+                                <h3 class="text-lg font-semibold mb-4">Change Password</h3>
+                                <div class="space-y-4 max-w-md">
+                                    <input type="password" id="currentPassword" placeholder="Current Password" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    <input type="password" id="newPassword" placeholder="New Password" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    <input type="password" id="confirmPassword" placeholder="Confirm New Password" class="w-full px-4 py-3 border border-slate-300 rounded-lg">
+                                    <button id="changePassword" class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                                        Change Password
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/src/admin.js"></script>
+</body>
+</html>
