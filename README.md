@@ -1,1 +1,1 @@
-# test
+<!-- placeholder for README.md; generated -->
