@@ -1,1 +1,93 @@
-<!-- placeholder for frp-checker.html; generated -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung FRP by IMEI - Model Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-white text-slate-900">
+    <!-- Navigation -->
+    <header class="border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="font-bold text-xl">GSM Pro Store</span>
+            </div>
+            <a href="/" class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                ← Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4">Samsung FRP by IMEI</h1>
+            <p class="text-xl text-slate-600">Check if your Samsung model supports FRP removal by IMEI</p>
+        </div>
+
+        <!-- Search -->
+        <div class="mb-8">
+            <div class="relative max-w-md mx-auto">
+                <input 
+                    id="searchInput" 
+                    type="text" 
+                    placeholder="Search Samsung model..." 
+                    class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                >
+                <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400"></i>
+            </div>
+        </div>
+
+        <!-- Results Table -->
+        <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-slate-50 border-b">
+                        <tr>
+                            <th class="px-6 py-4 text-left font-semibold text-slate-900">Model</th>
+                            <th class="px-6 py-4 text-left font-semibold text-slate-900">Chipset / Variants</th>
+                            <th class="px-6 py-4 text-center font-semibold text-slate-900">FRP Support</th>
+                            <th class="px-6 py-4 text-center font-semibold text-slate-900">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTable">
+                        <!-- Results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <p class="text-slate-600 mb-4">Don't see your model? Contact us for availability.</p>
+            <button id="contactBtn" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors">
+                Contact Support
+            </button>
+        </div>
+
+        <!-- Admin Controls (Hidden) -->
+        <div id="adminControls" class="mt-12 p-6 bg-slate-50 rounded-xl" style="display: none;">
+            <h3 class="text-lg font-semibold mb-4">Admin: Update FRP List</h3>
+            <textarea 
+                id="frpListEditor" 
+                rows="10" 
+                class="w-full p-4 border border-slate-300 rounded-lg font-mono text-sm"
+                placeholder="Enter FRP list data (one model per line)..."
+            ></textarea>
+            <div class="mt-4 flex gap-3">
+                <button id="saveList" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                    Save List
+                </button>
+                <button id="resetList" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                    Reset to Default
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/src/frp-checker.js"></script>
+</body>
+</html>
