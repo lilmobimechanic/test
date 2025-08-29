@@ -1,1 +1,302 @@
-<!-- placeholder for index.html; generated -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSM Store - Professional Mobile Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="bg-white text-slate-900">
+    <!-- Promo Banner -->
+    <div id="promoBanner" class="bg-gradient-to-r from-blue-700 to-cyan-500 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-2 text-sm text-center">
+            🔥 Special Offer - Professional GSM Services • Fast & Reliable
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="sticky top-0 bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="font-bold text-xl" id="brandName">GSM Pro Store</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
+                <a href="/frp-checker.html" class="hover:text-blue-600 transition-colors">Samsung FRP Check</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="contactBtn" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors">
+                    Contact Us
+                </button>
+                <button class="md:hidden p-2">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden">
+        <div id="heroSection" class="h-[60vh] bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative max-w-7xl mx-auto h-full px-4 flex items-center">
+                <div class="max-w-2xl text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                        Professional <span class="text-blue-400">GSM Services</span>
+                    </h1>
+                    <p class="text-xl text-slate-200 mb-8">
+                        Fast, reliable, and secure mobile device services. IMEI unlocks, FRP removal, and more.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold transition-colors">
+                            View Services
+                        </button>
+                        <button class="px-8 py-3 rounded-xl border border-white/30 hover:bg-white/10 font-semibold transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Status -->
+    <section class="border-y border-slate-200 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex flex-wrap gap-3 text-sm" id="serverStatus">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 border border-green-200">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    MTK/SPD/QLM: Online
+                </span>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 border border-green-200">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    Remote Flash: Online
+                </span>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 border border-green-200">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    Carrier Unlock: Online
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Service Categories -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-200 mb-8">
+                <button class="service-tab active px-6 py-3 rounded-t-xl font-semibold bg-blue-50 text-blue-700 border-b-2 border-blue-600" data-category="imei">
+                    IMEI Services
+                </button>
+                <button class="service-tab px-6 py-3 rounded-t-xl font-semibold text-slate-600 hover:bg-slate-50" data-category="frp">
+                    FRP / iCloud
+                </button>
+                <button class="service-tab px-6 py-3 rounded-t-xl font-semibold text-slate-600 hover:bg-slate-50" data-category="tools">
+                    Server Tools
+                </button>
+                <button class="service-tab px-6 py-3 rounded-t-xl font-semibold text-slate-600 hover:bg-slate-50" data-category="remote">
+                    Remote Services
+                </button>
+            </div>
+
+            <div id="servicesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Services will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CMS Content Sections -->
+    <section id="cmsSection1" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div id="cmsContent1" class="prose max-w-none">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Why Choose Our Services?</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Secure & Safe</h3>
+                        <p class="text-slate-600">All services are warranty-safe and use official methods.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="zap" class="w-8 h-8 text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast Processing</h3>
+                        <p class="text-slate-600">Most services completed within 24 hours or instantly.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="headphones" class="w-8 h-8 text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                        <p class="text-slate-600">Professional support available around the clock.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cmsSection2" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div id="cmsContent2" class="prose max-w-none">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">How It Works</h2>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
+                        <h3 class="font-semibold mb-2">Choose Service</h3>
+                        <p class="text-sm text-slate-600">Select the service you need from our catalog.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
+                        <h3 class="font-semibold mb-2">Submit Details</h3>
+                        <p class="text-sm text-slate-600">Provide device information and requirements.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
+                        <h3 class="font-semibold mb-2">Secure Payment</h3>
+                        <p class="text-sm text-slate-600">Pay securely through our encrypted gateway.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">4</div>
+                        <h3 class="font-semibold mb-2">Get Results</h3>
+                        <p class="text-sm text-slate-600">Receive your service results quickly and securely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+                    <p class="text-slate-600 mb-8">Have questions? Need a custom service? Contact us and we'll respond quickly with pricing and instructions.</p>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" name="name" placeholder="Your Name" class="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            <input type="email" name="email" placeholder="Email Address" class="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" name="imei" placeholder="IMEI (optional)" class="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <input type="text" name="model" placeholder="Device Model" class="px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <select name="service" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Select Service Type</option>
+                            <option value="imei-unlock">IMEI Unlock</option>
+                            <option value="frp-removal">FRP Removal</option>
+                            <option value="icloud-removal">iCloud Removal</option>
+                            <option value="remote-service">Remote Service</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <textarea name="message" rows="4" placeholder="Describe your requirements..." class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                            Send Inquiry
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-blue-600"></i>
+                            <div>
+                                <div class="font-semibold">Telegram</div>
+                                <div class="text-slate-600" id="telegramContact">@gsm_support</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-green-600"></i>
+                            <div>
+                                <div class="font-semibold">WhatsApp</div>
+                                <div class="text-slate-600" id="whatsappContact">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-purple-600"></i>
+                            <div>
+                                <div class="font-semibold">Response Time</div>
+                                <div class="text-slate-600">Usually within 1 hour</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+                        <h4 class="font-semibold text-blue-900 mb-2">Quick Process</h4>
+                        <ol class="text-sm text-blue-800 space-y-1">
+                            <li>1. Submit your inquiry with device details</li>
+                            <li>2. We respond with pricing and timeline</li>
+                            <li>3. Pay securely and receive service</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+                            <i data-lucide="smartphone" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-bold text-white" id="footerBrand">GSM Pro Store</span>
+                    </div>
+                    <p class="text-sm">Professional mobile device services with fast, secure, and reliable solutions.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">IMEI Unlock</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FRP Removal</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">iCloud Removal</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Remote Services</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>Telegram: <span id="footerTelegram">@gsm_support</span></li>
+                        <li>WhatsApp: <span id="footerWhatsapp">+1 (555) 123-4567</span></li>
+                        <li>Response: Within 1 hour</li>
+                        <li>Status: Online 24/7</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2025 GSM Pro Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/src/main.js"></script>
+</body>
+</html>
